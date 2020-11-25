@@ -84,7 +84,7 @@
  
 <!--  -->   <div class="form-group">
     <label for="exampleFormControlSelect2">Select Shipping Address</label>
-    <select class="form-control" th:field="*{user}"  id="exampleFormControlSelect2">
+    <select class="form-control" th:field="*{address}"  id="exampleFormControlSelect2">
     
       <option th:each="adr : ${address}"
       th:value="${adr.id}"
