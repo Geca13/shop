@@ -74,11 +74,11 @@ public class ShoppingCartController {
 	}
 	
 	@PostMapping("/shoppingCart")
-	public String proccesShoppingCart(@AuthenticationPrincipal UsersDetails userD ,@ModelAttribute("cart") ShoppingCart cart, Model model, @RequestBody Integer id) {
+	public String proccesShoppingCart(@AuthenticationPrincipal UsersDetails userD ,@ModelAttribute("cart") ShoppingCart cart, Model model) {
 		
 		
-		List<Product> products = addProducts(cart.getProducts());
-		Address address = addressRepository.findById(id).get();
+		
+		
 	    String userEmail = userD.getUsername();
         Users user = userRepository.findByEmail(userEmail);
 		LocalDate date = LocalDate.now();
@@ -86,15 +86,16 @@ public class ShoppingCartController {
         sc.setUser(user);
         sc.setDate(date);
         sc.setProducts(products);
-        sc.setAddress(address);
-        for (Product product : products) {
+        sc.setAddress(cart.getAddress());
+   /*     for (Product product : products) {
 			
         	total += product.getProductPrice();
         	
-        	
+        	//github pass Golm@n123 --- User Geca123
 		}
-        sc.setTotal(total);
         
+        sc.setTotal(total);
+        */
         cartRepository.save(sc);
 		
 		return "redirect:/profile";
