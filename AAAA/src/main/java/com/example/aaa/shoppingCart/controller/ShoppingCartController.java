@@ -91,7 +91,7 @@ public class ShoppingCartController {
 			
         	total += product.getProductPrice();
         	
-        	//github pass Golm@n123 --- User Geca123
+        	
 		}
         
         sc.setTotal(total);
